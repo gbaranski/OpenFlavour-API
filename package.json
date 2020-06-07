@@ -1,0 +1,19 @@
+{
+  "name": "flavors-api",
+  "version": "1.0.0",
+  "description": "API Server for flavors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbaranski/flavors-api.git"
+  },
+  "author": "gbaranski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gbaranski/flavors-api/issues"
+  },
+  "homepage": "https://github.com/gbaranski/flavors-api#readme"
+}
