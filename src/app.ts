@@ -1,13 +1,7 @@
 import express from 'express';
-import { MongoClient } from 'mongodb';
-
-MongoClient.connect('mongodb://localhost:27017');
+import apiRoutes from './routes/api-routes';
 
 const app = express();
-
-app.get('/', (req, res) => {
-  console.log('New request from /');
-  res.send('Hello');
-});
+app.use('/api', apiRoutes);
 
 export default app;
