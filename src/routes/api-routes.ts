@@ -9,9 +9,10 @@ router.get('/', (req, res) => {
       const flavor = await database
         .db('flavors')
         .collection('test')
-        .findOne({
+        .find({
           manufacturer: 'TPA',
-        });
+        })
+        .toArray();
       res.json(flavor);
       database.close();
     }
