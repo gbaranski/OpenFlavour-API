@@ -1,7 +1,7 @@
 {
-  "name": "flavors-api",
+  "name": "flavours-api",
   "version": "1.0.0",
-  "description": "API Server for flavors",
+  "description": "API Server for flavours",
   "main": "src/index.ts",
   "scripts": {
     "lint": "npm run lint:js && npm run lint:prettier",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gbaranski/flavors-api.git"
+    "url": "git+https://github.com/gbaranski/flavours-api.git"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -78,7 +78,7 @@
   "author": "gbaranski",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gbaranski/flavors-api/issues"
+    "url": "https://github.com/gbaranski/flavours-api/issues"
   },
-  "homepage": "https://github.com/gbaranski/flavors-api#readme"
+  "homepage": "https://github.com/gbaranski/flavuors-api#readme"
 }

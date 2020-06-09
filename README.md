@@ -1,24 +1,33 @@
 # Flavors API
+
 API Server for e-cig flavors
+
 # Info
+
 - Supports searching by only part of name, for e.g searching string 'cucum' will find 'cucumber'
 - Scrapers can be found there https://github.com/gbaranski/flavors-scrapers
+
 # Get data by manufacturer
+
 ```
 GET /byManufacturer
 ```
-Query params: 
+
+Query params:
+
 - key: String
 
 Respone
+
 ```
-Array 
+Array
   - _id: ObjectId
   - manufacturer: String
   - name: String
 ```
 
 Example
+
 ```
 GET /byManufacturer?key=TPA
 
@@ -37,21 +46,26 @@ GET /byManufacturer?key=TPA
 ```
 
 # Get data by name
+
 ```
 GET /byName
 ```
-Query params: 
+
+Query params:
+
 - key: String
 
 Respone
+
 ```
-Array 
+Array
   - _id: ObjectId
   - manufacturer: String
   - name: String
 ```
 
 Example
+
 ```
 GET /byName?key=cucumber
 
@@ -65,6 +79,7 @@ GET /byName?key=cucumber
 ```
 
 # Database structure
+
 ```
   - MongoDB
     - Database flavors
