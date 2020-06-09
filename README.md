@@ -2,6 +2,7 @@
 API Server for e-cig flavors
 # Info
 - Supports searching by only part of name, for e.g searching string 'cucum' will find 'cucumber'
+- Scrapers can be found there https://github.com/gbaranski/flavors-scrapers
 # Get data by manufacturer
 ```
 GET /byManufacturer
