@@ -4,7 +4,8 @@ import {
   findAllFlavoursInDatabase,
   findFlavoursInDatabaseByManufacturer,
 } from '../database/findFlavours';
-import { addSingleFlavourToDatabase } from '../database/addFlavours';
+import { saveFlavourToDatabase } from '../database/addFlavours';
+import { FlavourInterface } from '../types';
 
 const router = express.Router();
 
@@ -32,13 +33,9 @@ router.get('/findAll', async (req, res) => {
 
 router.use(express.json());
 
-router.post('/addSingleFlavour', async (req, res) => {
-  if (!req.body.name || !req.body.manufacturer) {
-    res.status(400).end();
-  }
-  await addSingleFlavourToDatabase({
-    name: req.body.name,
-    manufacturer: req.body.manufacturer,
+router.post('/addFlavour', async (req, res) => {
+  await req.body.forEach((flavour: FlavourInterface) => {
+    saveFlavourToDatabase(flavour);
   });
   res.status(200).end();
 });
