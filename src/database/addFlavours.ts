@@ -4,7 +4,7 @@ import { FlavourInterface } from '../types';
 
 const FlavourSchema = mongoose.model(FLAVOUR);
 
-export async function addFlavourToDatabase(flavour: FlavourInterface) {
+export async function addSingleFlavourToDatabase(flavour: FlavourInterface) {
   const newFlavour = new FlavourSchema({
     name: flavour.name,
     manufacturer: flavour.manufacturer,

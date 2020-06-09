@@ -4,7 +4,7 @@ import {
   findAllFlavoursInDatabase,
   findFlavoursInDatabaseByManufacturer,
 } from '../database/findFlavours';
-import { addFlavourToDatabase } from '../database/addFlavours';
+import { addSingleFlavourToDatabase } from '../database/addFlavours';
 
 const router = express.Router();
 
@@ -30,13 +30,13 @@ router.get('/findAll', async (req, res) => {
   console.log('Searching database by all');
 });
 
-router.use(express.urlencoded({ extended: true }));
+router.use(express.json());
 
-router.post('/addFlavor', async (req, res) => {
+router.post('/addSingleFlavour', async (req, res) => {
   if (!req.body.name || !req.body.manufacturer) {
     res.status(400).end();
   }
-  await addFlavourToDatabase({
+  await addSingleFlavourToDatabase({
     name: req.body.name,
     manufacturer: req.body.manufacturer,
   });
