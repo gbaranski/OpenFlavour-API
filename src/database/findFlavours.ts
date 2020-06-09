@@ -7,7 +7,14 @@ export async function findAllFlavoursInDatabase() {
 
 export async function findFlavoursInDatabaseByName(key: String) {
   const flavours = await Flavour.find({
-    name: /key/i,
+    name: { $regex: new RegExp(String(key), 'i') },
+  });
+  return flavours;
+}
+
+export async function findFlavoursInDatabaseByManufacturer(key: String) {
+  const flavours = await Flavour.find({
+    manufacturer: { $regex: new RegExp(String(key), 'i') },
   });
   return flavours;
 }

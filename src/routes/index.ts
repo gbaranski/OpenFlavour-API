@@ -1,13 +1,18 @@
 import express from 'express';
-import { findFlavoursInDatabaseByName, findAllFlavoursInDatabase } from '../database/findFlavours';
+import {
+  findFlavoursInDatabaseByName,
+  findAllFlavoursInDatabase,
+  findFlavoursInDatabaseByManufacturer,
+} from '../database/findFlavours';
 import { addFlavourToDatabase } from '../database/addFlavours';
 
 const router = express.Router();
 
-router.get('/byManufacturer', (req, res) => {
+router.get('/byManufacturer', async (req, res) => {
   if (!req.query.key) {
     res.status(400).end();
   }
+  res.send(await findFlavoursInDatabaseByManufacturer(String(req.query.key)));
   console.log(`Searching database by manufacturer using ${req.query.key}`);
 });
 
