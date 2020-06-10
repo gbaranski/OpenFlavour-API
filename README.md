@@ -142,7 +142,10 @@ Example
 
 ```
 POST /api/addFlavour
+
+Headers
 Content-Type: application/json
+token: YOUR TOKEN IN src/database/private/tokens.ts
 
 Body:
 [
