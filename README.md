@@ -5,7 +5,7 @@ API Server for e-cig flavors
 # Info
 
 - Supports searching by only part of name, for e.g searching string 'cucum' will find 'cucumber'
-- Scrapers can be found there https://github.com/gbaranski/flavors-scrapers
+- Scrapers can be found there https://github.com/gbaranski/OpenFlavour-Scraper
 # Guide
 Install MongoDB
 Start it, for MacOS it will be 
