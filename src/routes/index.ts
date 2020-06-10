@@ -45,10 +45,20 @@ router.post('/addFlavour', async (req, res) => {
     res.status(401).end();
     return;
   }
-
-  req.body.forEach((flavour: FlavourInterface) => {
-    saveFlavourToDatabase(flavour);
-  });
+  if (!Array.isArray(req.body)) {
+    res.status(400).end();
+    console.log('Use array');
+    return;
+  }
+  try {
+    req.body.forEach((flavour: FlavourInterface) => {
+      saveFlavourToDatabase(flavour);
+    });
+  } catch (e) {
+    res.status(500).end();
+    console.log('Request end with error', e);
+    return;
+  }
   res.status(200).end();
 });
 
