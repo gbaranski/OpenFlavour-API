@@ -6,6 +6,7 @@ import {
 } from '../database/findFlavours';
 import { saveFlavourToDatabase } from '../database/addFlavours';
 import { FlavourInterface } from '../types';
+import { authenticate } from '../database/authenticate';
 
 const router = express.Router();
 
@@ -34,6 +35,17 @@ router.get('/findAll', async (req, res) => {
 router.use(express.json());
 
 router.post('/addFlavour', async (req, res) => {
+  const token = req.header('token');
+  if (token) {
+    if (!authenticate(token)) {
+      res.status(401).end();
+      return;
+    }
+  } else {
+    res.status(401).end();
+    return;
+  }
+
   req.body.forEach((flavour: FlavourInterface) => {
     saveFlavourToDatabase(flavour);
   });
