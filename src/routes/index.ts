@@ -34,7 +34,7 @@ router.get('/findAll', async (req, res) => {
 router.use(express.json());
 
 router.post('/addFlavour', async (req, res) => {
-  await req.body.forEach((flavour: FlavourInterface) => {
+  req.body.forEach((flavour: FlavourInterface) => {
     saveFlavourToDatabase(flavour);
   });
   res.status(200).end();
