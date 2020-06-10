@@ -6,6 +6,24 @@ API Server for e-cig flavors
 
 - Supports searching by only part of name, for e.g searching string 'cucum' will find 'cucumber'
 - Scrapers can be found there https://github.com/gbaranski/flavors-scrapers
+# Guide
+Install MongoDB
+Start it, for MacOS it will be 
+```
+brew services start mongodb-community
+```
+Then do
+```
+git clone https://github.com/gbaranski/OpenFlavour-API.git
+cd OpenFlavour-API/
+npm install
+```
+And when thats done, start server using
+```
+npm start
+```
+Now use scrapers here from here https://github.com/gbaranski/OpenFlavour-Scraper to add flavours into database.
+
 
 # Get data by manufacturer
 
@@ -24,23 +42,26 @@ Array
   - _id: ObjectId
   - manufacturer: String
   - name: String
+  - __v: number
 ```
 
 Example
 
 ```
-GET /byManufacturer?key=TPA
+GET /api/byManufacturer?key=TPA
 
 [
   {
     "_id": "5ede18bab6b166195109b2a6",
     "manufacturer": "TPA",
-    "name": "cucumber"
+    "name": "cucumber",
+    "__v": 0
   },
   {
     "_id": "5ede2eefb6b166195109b2a7",
     "manufacturer": "TPA",
-    "name": "strawberry"
+    "name": "strawberry",
+    "__v": 0
   },
 ]
 ```
@@ -48,7 +69,7 @@ GET /byManufacturer?key=TPA
 # Get data by name
 
 ```
-GET /byName
+GET /api/byName
 ```
 
 Query params:
@@ -62,27 +83,95 @@ Array
   - _id: ObjectId
   - manufacturer: String
   - name: String
+  - __v: number
 ```
 
 Example
 
 ```
-GET /byName?key=cucumber
+GET /api/byName?key=cucumber
 
 [
   {
     "_id": "5ede18bab6b166195109b2a6",
     "manufacturer": "TPA",
-    "name": "cucumber"
+    "name": "cucumber",
+    "__v": 0
   },
 ]
+```
+# Get all data
+```
+GET /api/findAll
+```
+Example
+
+```
+GET /api/findAll
+
+[
+  {
+    "_id": "5ede18bab6b166195109b2a6",
+    "manufacturer": "TPA",
+    "name": "cucumber",
+    "__v": 0
+  },
+  {
+    "_id": "5ede2eefb6b166195109b2a7",
+    "manufacturer": "TPA",
+    "name": "strawberry",
+    "__v": 0
+  },
+]
+```
+
+Response 
+```
+Array
+  - _id: ObjectId
+  - manufacturer: String
+  - name: String
+  - __v: number
+```
+
+# Post data
+```
+POST /api/addFlavour
+```
+Example
+
+```
+POST /api/addFlavour
+Content-Type: application/json
+
+Body:
+[
+  {
+    "manufacturer": "TPA",
+    "name": "cucumber",
+  },
+  {
+    "manufacturer": "TPA",
+    "name": "strawberry",
+  },
+]
+```
+
+Response 
+
+```
+Array
+  - _id: ObjectId
+  - manufacturer: String
+  - name: String
+  - __v: number
 ```
 
 # Database structure
 
 ```
   - MongoDB
-    - Database flavors
-      - Collection test
-        - Array[_id, manufacturer, name]
+    - openFlavours DB
+      - flavours Collection
+        - Array[_id, manufacturer, name, __v]
 ```
